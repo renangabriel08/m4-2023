@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:m4/controllers/api_controller.dart';
 import 'package:m4/controllers/inputs_controller.dart';
+import 'package:m4/pages/app.dart';
 import 'package:m4/styles/cores.dart';
 import 'package:m4/styles/fonts.dart';
 
@@ -36,7 +37,11 @@ class _LoginState extends State<Login> {
             options: const AuthenticationOptions(biometricOnly: true),
           );
           if (didAuthenticate) {
-            Navigator.pushNamed(context, '/app');
+            Navigator.pushNamed(
+              context,
+              '/app',
+              arguments: ScreenArguments('Teste', 'teste@gmail.com'),
+            );
           } else {
             erros++;
             if (erros == 3) {

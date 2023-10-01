@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:m4/pages/app.dart';
 
 class ApiController {
   static logar(String email, String senha, context) async {
@@ -8,7 +9,11 @@ class ApiController {
     );
     final req = await http.post(url);
     if (req.statusCode == 200) {
-      Navigator.pushNamed(context, '/app');
+      Navigator.pushNamed(
+        context,
+        '/app',
+        arguments: ScreenArguments('Teste', email),
+      );
     }
   }
 }
